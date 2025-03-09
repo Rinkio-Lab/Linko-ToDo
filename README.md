@@ -40,28 +40,6 @@
    pip install -r requirements.txt
    ```
 
-## 目录结构
-
-```
-ToDoList/
-│
-├── app/
-│   ├── __init__.py
-│   ├── routes.py
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── index.html
-│   │   └── layout.html
-│   └── static/
-│       ├── css/
-│       │   └── styles.css
-│       └── js/
-│           └── scripts.js
-│
-├── run.py
-└── requirements.txt
-```
-
 ## 使用方法
 
 1. 启动应用：
