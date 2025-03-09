@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linko ToDo</title>
+    <link rel="stylesheet" href="./app/static/css/styles.css">
+    <script>
+        // 检查系统主题
+        function checkSystemTheme() {
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        // 设置主题
+        function setTheme(isDark) {
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        }
+
+        // 初始化主题
+        async function initTheme() {
+            try {
+                const response = await fetch('http://localhost:5000/api/theme');
+                const theme = await response.json();
+                if (theme.follow_system) {
+                    setTheme(checkSystemTheme());
+                } else {
+                    setTheme(theme.dark_mode);
+                }
+            } catch (error) {
+                console.error('获取主题设置失败:', error);
+            }
+        }
+
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            initTheme();
+        });
+
+        // 页面加载时初始化主题
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="themeToggle" class="theme-btn">切换主题</button>
+        <button id="systemTheme" class="theme-btn">跟随系统</button>
+    </div>
+    <div class="container">
+        <h1>Linko ToDo</h1>
+        <div class="todo-input">
+            <div class="input-group">
+                <input type="text" id="todoInput" placeholder="添加新的待办事项..." />
+                <input type="date" id="dueDateInput" />
+                <select id="priorityInput">
+                    <option value="low">低优先级</option>
+                    <option value="medium" selected>中优先级</option>
+                    <option value="high">高优先级</option>
+                </select>
+                <input type="text" id="categoryInput" placeholder="分类..." />
+            </div>
+            <button id="addTodo">添加</button>
+        </div>
+        <div class="todo-filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="active">未完成</button>
+            <button class="filter-btn" data-filter="completed">已完成</button>
+        </div>
+        <ul id="todoList" class="todo-list"></ul>
+        <div class="todo-stats">
+            <span id="todoCount">0 个待办事项</span>
+            <button id="clearCompleted">清除已完成</button>
+        </div>
+    </div>
+    <script src="./app/static/js/app.js"></script>
+</body>
+
+</html>
