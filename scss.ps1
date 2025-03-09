@@ -7,7 +7,7 @@ param(
 
 # 设置变量
 $scssDir = "app\static\css\scss"
-$cssOutput = "app\static\css\styles.css"
+$cssOutput = "app\static\css\"
 
 # 检查是否安装了sass
 try {
@@ -40,12 +40,10 @@ function Compile-Scss {
 # 监视函数
 function Watch-Scss {
     Write-Host "开始监视 SCSS 文件变化..." -ForegroundColor Cyan
-    Write-Host "监视目录: $scssDir" -ForegroundColor Gray
-    Write-Host "输出文件: $cssOutput" -ForegroundColor Gray
     Write-Host "按 Ctrl+C 停止监视" -ForegroundColor Yellow
     
     try {
-        sass --watch "$scssDir\main.scss":"$cssOutput" --style=compressed
+        sass --watch "$scssDir\main.scss" $cssOutput --style=compressed
     } catch {
         Write-Host "× 监视过程中发生错误：$_" -ForegroundColor Red
         exit 1

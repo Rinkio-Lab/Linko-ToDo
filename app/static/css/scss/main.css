@@ -1,2 +1,23 @@
-@use 'variables';@use 'mixins';@use 'base';@use 'components';@keyframes ripple{0%{transform:scale(0, 0);opacity:0.5}100%{transform:scale(100, 100);opacity:0}}@keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-/*# sourceMappingURL=main.css.map */
+/*
+Errno::ENOENT: No such file or directory @ rb_sysopen - app\static\css\scss\main.scss
+
+Backtrace:
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:454:in `read'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:454:in `update_stylesheet'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:294:in `watch'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/plugin.rb:109:in `method_missing'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:358:in `watch_or_update'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:51:in `process_result'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+C:/Users/Linko/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+C:/Users/Linko/AppData/Local/Microsoft/WindowsApps/sass:32:in `load'
+C:/Users/Linko/AppData/Local/Microsoft/WindowsApps/sass:32:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOENT: No such file or directory @ rb_sysopen - app\static\css\scss\main.scss"; }
