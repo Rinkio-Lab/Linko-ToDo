@@ -1,0 +1,49 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// 基础样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  @include theme-colors($light-theme);
+}
+
+[data-theme="dark"] {
+  @include theme-colors($dark-theme);
+}
+
+body {
+  font-family: $font-family;
+  line-height: 1.6;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color $transition-base, color $transition-base;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--container-bg);
+  box-shadow: 0 8px 24px var(--shadow-color);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  @media (max-width: 768px) {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}

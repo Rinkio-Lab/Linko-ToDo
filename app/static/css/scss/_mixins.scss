@@ -1,0 +1,21 @@
+// Mixins
+@mixin theme-colors($theme) {
+  @each $property, $value in $theme {
+    --#{$property}: #{$value};
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-base {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: $border-radius-base;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all $transition-base;
+}

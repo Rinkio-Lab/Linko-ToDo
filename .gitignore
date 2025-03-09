@@ -17,6 +17,9 @@ env/
 .idea/
 .vscode/
 
+# SCSS Cache
+.sass-cache/
+
 # Database
 *.db
 *.sqlite3

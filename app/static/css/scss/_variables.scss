@@ -1,0 +1,46 @@
+// 基础变量
+$font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+$transition-base: 0.3s ease;
+$border-radius-base: 6px;
+
+// 亮色主题变量
+$light-theme: (
+  background-color: #f3f3f3,
+  text-color: #323130,
+  container-bg: rgba(255, 255, 255, 0.95),
+  border-color: rgba(225, 223, 221, 0.8),
+  accent-color: #0078d4,
+  hover-color: #106ebe,
+  item-bg: rgba(255, 255, 255, 0.7),
+  shadow-color: rgba(0, 0, 0, 0.08),
+  input-bg: rgba(255, 255, 255, 0.9),
+  input-text: #323130,
+  filter-btn-bg: rgba(255, 255, 255, 0.8),
+  heading-color: #2c3e50,
+  text-secondary: #666666,
+  tag-bg: rgba(0, 120, 212, 0.1),
+  delete-btn-bg: #d13438,
+  delete-btn-hover-bg: #a4262c,
+  delete-btn-text: white
+);
+
+// 暗色主题变量
+$dark-theme: (
+  background-color: #1f1f1f,
+  text-color: #ffffff,
+  container-bg: rgba(32, 32, 32, 0.95),
+  border-color: rgba(64, 64, 64, 0.8),
+  accent-color: #4ba0ff,
+  hover-color: #5fb0ff,
+  item-bg: rgba(50, 50, 50, 0.7),
+  shadow-color: rgba(0, 0, 0, 0.15),
+  input-bg: rgba(45, 45, 45, 0.9),
+  input-text: #e0e0e0,
+  filter-btn-bg: rgba(50, 50, 50, 0.8),
+  heading-color: #e0e0e0,
+  text-secondary: #a0a0a0,
+  tag-bg: rgba(75, 160, 255, 0.15),
+  delete-btn-bg: #c50f1f,
+  delete-btn-hover-bg: #951019,
+  delete-btn-text: white
+);

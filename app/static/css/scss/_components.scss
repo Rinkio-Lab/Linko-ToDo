@@ -1,0 +1,241 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// 输入区域样式
+.todo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  .input-group {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 0.75rem;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+%input-shared {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-base;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+  }
+}
+
+#todoInput {
+  @extend %input-shared;
+  flex: 2;
+}
+
+#dueDateInput,
+#priorityInput,
+#categoryInput {
+  @extend %input-shared;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+// 按钮样式
+button {
+  @include button-base;
+  background-color: var(--accent-color);
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+
+  &:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+  }
+}
+
+// 过滤器按钮
+.todo-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+
+  .filter-btn {
+    background-color: var(--filter-btn-bg);
+    color: var(--text-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    transition: all $transition-base;
+
+    &:hover {
+      background-color: var(--hover-color);
+      color: white;
+      border-color: transparent;
+    }
+
+    &.active {
+      background-color: var(--filter-btn-active);
+      color: white;
+      border-color: transparent;
+    }
+  }
+}
+
+// Todo列表样式
+.todo-list {
+  list-style: none;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--item-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+
+  &.completed {
+    background-color: var(--item-bg);
+    opacity: 0.85;
+
+    .todo-text {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+      opacity: 0.8;
+    }
+
+    .todo-details {
+      opacity: 0.6;
+    }
+  }
+}
+
+.todo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .todo-text {
+    font-size: 1.1rem;
+    word-break: break-word;
+  }
+
+  .todo-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+}
+
+%tag-base {
+  background-color: var(--tag-bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.todo-due-date,
+.todo-category,
+.todo-priority {
+  @extend %tag-base;
+}
+
+.delete-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--delete-btn-bg);
+  color: var(--delete-btn-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--delete-btn-hover-bg);
+  }
+}
+
+.todo-checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+// 主题切换按钮
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .theme-btn {
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}
